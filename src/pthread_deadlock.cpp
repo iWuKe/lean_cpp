@@ -8,7 +8,7 @@
 #include <string.h>
 #include <pthread.h>
 
-#define MAX 100
+#define MAX 1000
 //全局变量
 int number;
 
@@ -26,7 +26,7 @@ void* funcA_NUM(void* arg)
         cur++;
         usleep(10);
         number = cur;
-        pthread_mutex_unlock(&mutex);
+        //忘记解锁
         printf("A thread id %u, number = %d \n", pthread_self(), number);
     }
     return nullptr;

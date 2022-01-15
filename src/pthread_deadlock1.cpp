@@ -1,4 +1,5 @@
 //线程同步-互斥锁
+//死锁-重复加锁
 
 #include <stdio.h>
 #include <unistd.h>
@@ -8,9 +9,7 @@
 #include <string.h>
 #include <pthread.h>
 
-#define MAX 100
-//全局变量
-int number;
+#define MAX 1000
 
 //创建一把互斥锁
 //全局变量，多个线程共享
@@ -21,13 +20,12 @@ void* funcA_NUM(void* arg)
 {
     for (size_t i = 0; i < MAX; i++)
     {
+        //线程加锁
         pthread_mutex_lock(&mutex);
-        int cur = number;
-        cur++;
-        usleep(10);
-        number = cur;
+        printf("A thread id %u, \n", pthread_self());
+        //解锁一次
         pthread_mutex_unlock(&mutex);
-        printf("A thread id %u, number = %d \n", pthread_self(), number);
+        usleep(10);
     }
     return nullptr;
 }
@@ -38,15 +36,27 @@ void* funcB_NUM(void* arg)
     for (size_t i = 0; i < MAX; i++)
     {
         pthread_mutex_lock(&mutex);
-        int cur = number;
-        cur++;
-        number = cur;
+        printf("B thread id %u \n", pthread_self());
+        //在此调用func a，因为此时由线程b加锁，导致卡在a的pthread_mutex_lock处
+        funcA_NUM(nullptr);
         pthread_mutex_unlock(&mutex);
-        printf("B thread id %u, number = %d \n", pthread_self(), number);
-        usleep(5);
+        usleep(10);
     }
     return nullptr;
 }
+
+//线程c 加锁两次，解锁一次
+void* func(){
+        //线程加锁
+        pthread_mutex_lock(&mutex);
+        //重复加锁
+        pthread_mutex_lock(&mutex);
+        printf("c thread id %u, \n", pthread_self());
+        //解锁一次
+        pthread_mutex_unlock(&mutex);
+        usleep(10);
+}
+
 int main(int argc, const char* argv[])
 {
     pthread_t p1, p2;
