@@ -1,5 +1,0 @@
-/home/ln/lean/thread/lean_thread/build/CMakeFiles/edit_cache.dir
-/home/ln/lean/thread/lean_thread/build/CMakeFiles/rebuild_cache.dir
-/home/ln/lean/thread/lean_thread/build/CMakeFiles/pthread_join.dir
-/home/ln/lean/thread/lean_thread/build/CMakeFiles/pthread_lean1.dir
-/home/ln/lean/thread/lean_thread/build/CMakeFiles/pthread_exit.dir
