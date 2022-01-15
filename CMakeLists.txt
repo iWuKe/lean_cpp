@@ -18,3 +18,9 @@ add_executable(pthread_join
 target_link_libraries(pthread_join
  pthread
 )
+
+add_executable(pthread_synchronize
+                src/pthread_synchronize.cpp)
+target_link_libraries(pthread_synchronize
+ pthread
+)
