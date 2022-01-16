@@ -48,3 +48,10 @@ add_executable(producer_and_consumer_sem
 target_link_libraries(producer_and_consumer_sem
 pthread
 )
+
+
+add_executable(mp_tcp
+                src/mp_tcp.cpp)
+target_link_libraries(mp_tcp
+pthread
+)
