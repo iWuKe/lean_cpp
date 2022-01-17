@@ -49,9 +49,24 @@ target_link_libraries(producer_and_consumer_sem
 pthread
 )
 
-
 add_executable(mp_tcp
                 src/mp_tcp.cpp)
 target_link_libraries(mp_tcp
+)
+
+add_executable(mt_tcp
+                src/mt_tcp.cpp)
+target_link_libraries(mt_tcp
 pthread
 )
+
+add_executable(thread
+                src/thread.cpp)
+target_link_libraries(thread
+)
+
+# add_executable(atomic
+#                 src/atomic.cpp)
+# target_link_libraries(atomic
+#     -latomic
+# )
