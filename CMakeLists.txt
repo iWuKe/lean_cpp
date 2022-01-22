@@ -75,3 +75,13 @@ target_link_libraries(thread
 # target_link_libraries(atomic
 #     -latomic
 # )
+
+add_executable(lambda
+                src/lambda.cpp)
+target_link_libraries(lambda
+)
+
+add_executable(bind
+                src/bind.cpp)
+target_link_libraries(bind
+)
