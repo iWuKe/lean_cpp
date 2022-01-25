@@ -85,3 +85,8 @@ add_executable(bind
                 src/bind.cpp)
 target_link_libraries(bind
 )
+
+add_executable(sort
+                src/sort.cpp)
+target_link_libraries(sort
+)
