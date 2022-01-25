@@ -93,6 +93,30 @@ static void insertionSort(std::vector<int>& nums)
   }
 }
 
+//希尔排序
+//采用希尔增量方式
+static void shellSort(std::vector<int>& nums)
+{
+  //增量gap，逐步缩小增量
+  for (int gap = nums.size() / 2; gap > 0; gap /= 2)
+  {
+    //从gap个元素，逐个对其所在组进行直接插入排序操作
+    for (int i = gap; i < nums.size(); i++)
+    {
+      int j = i;
+      int temp = nums.at(j);
+      if (nums.at(j) < nums.at(j - gap))
+      {
+        while (j - gap >= 0 && temp < nums.at(j - gap))
+        {
+          nums.at(j) = nums.at(j - gap);
+          j -= gap;
+        }
+        nums.at(j) = temp;
+      }
+    }
+  }
+}
 
 void test(int size, int min, int max)
 {
@@ -106,9 +130,17 @@ void test(int size, int min, int max)
   //插入排序
   fs.push_back(insertionSort);
 
+  //希尔排序
+  fs.push_back(shellSort);
+
   static std::vector<int> random_nums = generateRandomArray(size, min, max);
   std::cout << "获取到随机数队列 : " << std::endl;
   printfNums(random_nums);
+
+  std::vector<int> numbers = random_nums;
+  fs.front()(numbers);
+  std::cout << "我使用了冒泡排序， 排序结果: " << std::endl;
+  printfNums(numbers);
 
   for (size_t i = 0; i < fs.size(); i++)
   {
@@ -118,10 +150,15 @@ void test(int size, int min, int max)
     //排序
     (fs.at(i))(nums);
     finish = clock();
-    std::cout << "第" << i << "次排序, 结果：" << std::endl;
-    printfNums(nums);
     double totaltime = (double)(finish - start) / CLOCKS_PER_SEC * 1000.0;
-    std::cout << "共耗时 :" << totaltime << " ms" << std::endl;
+
+    std::cout << "第" << i << "次排序";
+    if (isSorted(nums))
+    {
+      std::cout << "成功，共耗时 :" << totaltime << " ms" << std::endl;
+    }else{
+      std::cout << "失败" << std::endl;
+    }
   }
 }
 

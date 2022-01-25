@@ -64,7 +64,6 @@ void* consumer(void* arg)
         printf("--- consumer: number %d, tid = %ld \n", line.front(), pthread_self());
         //消费头节点，将其删除
         line.pop();
-        
         pthread_mutex_unlock(&mutex);
         sleep(rand() % 3);
     }
