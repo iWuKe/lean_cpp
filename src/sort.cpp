@@ -133,8 +133,12 @@ void test(int size, int min, int max)
   //希尔排序
   fs.push_back(shellSort);
 
-  static std::vector<int> random_nums = generateRandomArray(size, min, max);
-  std::cout << "获取到随机数队列 : " << std::endl;
+  int nums_size = 75;
+  //随机数长度
+  nums_size = rand() % 100;
+
+  static std::vector<int> random_nums = generateRandomArray(nums_size, min, max);
+  std::cout << "获取到随机数队列" << nums_size << "个 ：" << std::endl;
   printfNums(random_nums);
 
   std::vector<int> numbers = random_nums;
