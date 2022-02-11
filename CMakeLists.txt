@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(pthread_lean)
 
+#c++11
+add_compile_options(-std=c++11)
+
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
@@ -94,4 +97,10 @@ target_link_libraries(sort
 add_executable(ucontext
                 src/ucontext.cpp)
 target_link_libraries(ucontext
+)
+
+#
+add_executable(shared_ptr1
+                src/shared_ptr1.cpp)
+target_link_libraries(shared_ptr1
 )
