@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(pthread_lean)
+project(lean_thread)
 
 #c++11
 add_compile_options(-std=c++11)
@@ -103,4 +103,12 @@ target_link_libraries(ucontext
 add_executable(shared_ptr1
                 src/shared_ptr1.cpp)
 target_link_libraries(shared_ptr1
+)
+
+add_executable(search
+  src/data_structure/graph.cpp
+  src/data_structure/search.cpp
+  src/data_structure/main.cpp
+)
+target_link_libraries(search
 )
