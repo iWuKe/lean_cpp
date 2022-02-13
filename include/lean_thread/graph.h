@@ -9,6 +9,7 @@
 #include <time.h>
 #include <queue>
 #include <vector>
+#include <stack>
 
 class Graph
 {

@@ -1,4 +1,7 @@
 #include "lean_thread/search.h"
+using namespace dfs;
+using namespace dfp;
+using namespace bfs;
 
 void test()
 {
@@ -7,8 +10,8 @@ void test()
   {
     graph.addEdge(1, 2 * i);
   }
-  // graph.addEdge(6, 5);
-  // graph.addEdge(5, 9);
+  graph.addEdge(6, 5);
+  graph.addEdge(5, 9);
   DepthFirstSearch depth(graph, 1);
   for (size_t i = 0; i < 10; i++)
   {
@@ -17,6 +20,20 @@ void test()
       std::cout << "mark " << i << std::endl;
     }
   }
+  int dfs_count = depth.Count();
+  std::cout << "dfs count" << dfs_count << std::endl;
+
+  BreadthFirstSearch bread(graph, 1);
+  for (size_t i = 0; i < 10; i++)
+  {
+    if (bread.Marked(i))
+    {
+      std::cout << "mark " << i << std::endl;
+    }
+  }
+  int bfs_count = depth.Count();
+  std::cout << "bfs count" << bfs_count << std::endl;
+
 }
 
 int main(int argc, char* argv[])
