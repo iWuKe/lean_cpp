@@ -179,6 +179,25 @@ void* worker(void* arg)
       threadExit(pool);
     }
     
+    //从任务队列中取出一个任务
+    Task task;
+    task.function = pool->taskQ[pool->queueFront].function;
+    task.arg = pool->taskQ[pool->queueFront].arg;
+    //移动头结点
+    pool->queueFront = (pool->queueFront + 1) % pool->queueCapacity;
+    pool->queueSize --;
+    //解锁
+    pthread_cond_signal(&pool->notFull);
+    pthread_mutex_unlock(&pool->mutexPool);
+
+    printf("thread %ld, start working ...\n", pthread_self());
+    pthread_mutex_lock(&pool->mutexBusy);
+    pool->busyNUM ++;
+    pthread_mutex_unlock(&pool->mutexBusy);
+    task.function(task.arg);
+    free(task.arg);
+    task.arg = NULL;
+
   }
   
 }
