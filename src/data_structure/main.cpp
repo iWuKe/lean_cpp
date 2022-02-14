@@ -34,6 +34,17 @@ void test()
   int bfs_count = depth.Count();
   std::cout << "bfs count" << bfs_count << std::endl;
 
+  //使用dfs查找路径
+  DepthFirstPaths dfps(graph, 1);
+  std::stack<int> path = dfps.pathTo(5);
+
+  while (!path.empty())
+  {
+    int v = path.top();
+    path.pop();
+    std::cout << v << " - ";
+  }
+  std::cout << std::endl;
 }
 
 int main(int argc, char* argv[])

@@ -68,7 +68,44 @@ DepthFirstPaths::~DepthFirstPaths()
     delete[] this->marked;
     this->marked = nullptr;
   }
+}
 
+void DepthFirstPaths::dfs(Graph G, int v)
+{
+  this->marked[v] = true;
+  std::vector<int> adj = G.Adj(v);
+  for (auto w : adj)
+  {
+    if (!this->marked[w])
+    {
+      this->edgeTo[w] = v;
+      dfs(G, w);
+    }
+  }
+}
+
+//判断w顶点和s顶点是否存在路径
+bool DepthFirstPaths::hasPathTo(int v)
+{
+  return this->marked[v];
+}
+
+std::stack<int> DepthFirstPaths::pathTo(int v)
+{
+  std::stack<int> path;
+  //当前v顶点与s顶点不通，直接返回空，没有路径
+  if (!hasPathTo(v))
+  {
+    std::cout << "null " << std::endl;
+    return path;
+  }
+  for (int x = v; x != this->s; x = this->edgeTo[x])
+  {
+    path.push(x);
+  }
+  //吧起点放入容器
+  path.push(this->s);
+  return path;
 }
 
 }
