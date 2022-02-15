@@ -47,9 +47,12 @@ Digraph Digraph::reverse()
   //遍历 0-v-1所有顶点，拿到没一个顶点v
   for (size_t i = 0; i < this->vertex; i++)
   {
-    
+    std::vector<int> adji = this->adj.at(i);
+    for(auto w : adji)
+    {
+      r.addEdge(w, this->vertex);
+    }
   }
-  
-
+  return r;
 }
 
