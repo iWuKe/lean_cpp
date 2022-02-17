@@ -1,13 +1,13 @@
 #include "lean_thread/digraph.h"
 
-Digraph::Digraph(int V)
+Digraph::Digraph(int v)
 {
   //初始化顶点数量
-  this->vertex = V;
+  this->vertex = v;
   //初始化边的数量
   this->edge = 0;
   //初始化邻接表
-  this->adj.resize(V);
+  this->adj.resize(v);
 }
 
 Digraph::~Digraph()
@@ -23,7 +23,7 @@ int Digraph::E()
 //返回边的数目
 int Digraph::V()
 {
-  this->vertex;
+  return this->vertex;
 }
 
 //向有向图中添加一条边 v->w
