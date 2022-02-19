@@ -89,7 +89,11 @@ int main(int argc, char* argv[])
   {
     //构造函数传递自定义删除器指针
     std::shared_ptr<Sample> p3(new Sample[3], deleter);
+    //将指针置nullptr，将释放指针
+    p3 = nullptr;
+    std::cout << "nullptr" << std::endl;
   } while (0);
+  std::cout << "while end" << std::endl;
 
   std::cout << "***************使用lambda表达式/函数对象作为删除器***********************" << std::endl;
   //使用lambda表达式/函数对象作为删除器

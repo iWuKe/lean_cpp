@@ -1,4 +1,5 @@
-#include "lean_thread/directedcycle.h"
+// #include "lean_thread/directedcycle.h"
+#include "lean_thread/disearch.h"
 
 void test()
 {
@@ -17,6 +18,22 @@ void test()
     std::cout << "有环" << std::endl;
   }else{
     std::cout << "无环" << std::endl;
+  }
+
+  std::stack<int> order;
+  //没有环则创建顶点排序对象，进行排序
+  if (!dc.HasCycle())
+  {
+    DepthFirstOrder dfo(dg);
+    order = dfo.reversePose();
+
+    while (!order.empty())
+    {
+      int v = order.top();
+      order.pop();
+      std::cout << v << " -> ";
+    }
+    std::cout << std::endl;
   }
 }
 

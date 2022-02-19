@@ -118,6 +118,7 @@ add_executable(digraph
   src/data_structure/digraph_main.cpp
   src/data_structure/digraph.cpp
   src/data_structure/directedcycle.cpp
+  src/data_structure/disearch.cpp
 )
 target_link_libraries(digraph
 )
