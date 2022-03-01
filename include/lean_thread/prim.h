@@ -3,7 +3,8 @@
 #include "learn_thread/edge_weighted_graph.h"
 
 //prim算法
-//
+//prim算法始终将图中的顶点切分成两个集合，最小生成树顶点和非最小生成树顶点，通过不断的重复做某些操作
+//可以逐渐将非最小生成树中的顶点加入到最小生成树中，直到所有的顶点都加入到最小生成树中。
 
 class PrimMST
 {
@@ -27,13 +28,6 @@ public:
   ~PrimMST();
 };
 
-PrimMST::PrimMST(/* args */)
-{
-}
-
-PrimMST::~PrimMST()
-{
-}
 
 
 

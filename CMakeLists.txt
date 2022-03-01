@@ -122,3 +122,9 @@ add_executable(digraph
 )
 target_link_libraries(digraph
 )
+
+add_executable(test1
+  src/c++11/test.cpp
+  )
+target_link_libraries(test1
+)
