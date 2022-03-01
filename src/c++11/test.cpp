@@ -145,6 +145,7 @@ template <typename T> void forward_value(T && val)
 
 int main(int argc, char* argv[])
 {
+  //静态断言
   // static_assert(sizeof(void *) == 4, "64-bit code generation is not supported");
   static_assert(sizeof(void *) == 8, "32-bit code generation is not supported");
   cout << "hello world!" << endl;
