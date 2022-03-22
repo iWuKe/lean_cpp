@@ -128,3 +128,9 @@ add_executable(test1
   )
 target_link_libraries(test1
 )
+
+add_executable(vector
+  src/data_structure/vector.cpp
+)
+target_link_libraries(vector
+)
