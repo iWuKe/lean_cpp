@@ -21,7 +21,8 @@ private:
   //索引代表顶点，如果当前顶点已经在树中，则值为true，否则为false
   bool* marked;
   //存放树中顶点与非树中顶点之间的有效横切边
-  std::priority_queue<int, std::vector<int>, greater<int>> pq;
+  std::multimap<int, double> pq;
+  // std::priority_queue<int, std::vector<int>, greater<int>> pq;
 public:
   //根据一副加权无向图，创建最小生成树计算对象
   PrimMST(EdgeWeightedGraph G);

@@ -19,11 +19,22 @@ PrimMST::PrimMST(EdgeWeightedGraph G)
   this->pq.resize(g_size);
   //默认让树顶点0进入树中，但0顶点目前没有与树中其他的顶点相连接，因此初始化distTo[0] = 0.0
   this->distTo[0] = 0.0;
-  //
+  //使用顶点0和权重0初始化pq
+  this->pq.insert(pair<int, double>(0, 0.0));
+  while (pq.empty())
+  {
+    visit(G, pq.begin()->first);
+  }
 }
 
 PrimMST::~PrimMST()
 {
+  if (this->distTo != nullptr)
+  {
+    delete[] this->distTo;
+    this->distTo = nullptr;
+  }
+  
 }
 
 
@@ -49,9 +60,21 @@ void PrimMST::visit(EdgeWeightedGraph G, int v)
     {
       //把顶点w距离最小生成树的边修改为e
       this->edgeTo[w] = e;
+      //把顶点w距离最小生成树的变的权重修改为e.weight();
+      this->distTo[w] = e.weight();
+      //如果pq中存储的有效横切边已经包含了w顶点，则需要修正最小索引优先队列w索引关联的权重值
+	    auto pos = pq.find(w);
+      if (pos != pq.end())
+      {
+        (*pos).second = e.weight();
+      }else{
+        //如果pq中存储的有效横切边不包含w顶点，则需要向最小索引优先队列中添加v-w和其权重值
+        pq.insert(pair<int, double>(w, e.weight()));
+      }
     }
-    
   }
   
+  
+
 
 }
