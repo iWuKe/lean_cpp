@@ -123,9 +123,16 @@ add_executable(digraph
 target_link_libraries(digraph
 )
 
-add_executable(test1
+add_executable(mtest
   src/c++11/test.cpp
   )
+target_link_libraries(mtest
+)
+
+add_executable(test1
+  # src/c++11/my_unique_ptr.cpp
+  src/c++11/test1.cpp
+)
 target_link_libraries(test1
 )
 
