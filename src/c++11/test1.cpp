@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
   A* g = f.get();
   cout << "get : " << g->name << endl;
   // delete g;
-
+  // g = nullptr;
 
   cout << "return" << endl;
   return 0;

@@ -130,14 +130,28 @@ target_link_libraries(mtest
 )
 
 add_executable(test1
-  # src/c++11/my_unique_ptr.cpp
   src/c++11/test1.cpp
 )
 target_link_libraries(test1
 )
 
+add_executable(test2
+  src/c++11/test2.cpp
+)
+target_link_libraries(test2
+)
+
+
 add_executable(vector
   src/data_structure/vector.cpp
 )
 target_link_libraries(vector
+)
+
+#以下是c++多线程
+add_executable(thread1
+  src/c++thread/thread1.cpp
+)
+target_link_libraries(thread1
+pthread
 )
