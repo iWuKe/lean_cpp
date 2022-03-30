@@ -155,3 +155,10 @@ add_executable(thread1
 target_link_libraries(thread1
 pthread
 )
+
+add_executable(thread2
+  src/c++thread/thread2.cpp
+)
+target_link_libraries(thread2
+pthread
+)

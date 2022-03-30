@@ -7,6 +7,14 @@ join() 等待线程终止（阻塞）
 detach()线程分离，分理处主线程和创建出的子线程
 */
 
+/*
+命名空间
+this_thread::get_id()获取当前线程的线程id
+this_thread::sleep_for()休眠函数（延时用），调用这个函数会将该线程从运行态转为阻塞态
+this_thread::sleep_until()指定线程阻塞到某一个指定的时间点，time_point类型，之后解除阻塞
+this_thread::yield()线程中调用了这个函数后，会主动放弃cpu资源，但是这个就绪态线程会马上参与到下一轮cpu抢夺中
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
