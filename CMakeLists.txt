@@ -123,14 +123,42 @@ add_executable(digraph
 target_link_libraries(digraph
 )
 
-add_executable(test1
+add_executable(mtest
   src/c++11/test.cpp
   )
+target_link_libraries(mtest
+)
+
+add_executable(test1
+  src/c++11/test1.cpp
+)
 target_link_libraries(test1
 )
+
+add_executable(test2
+  src/c++11/test2.cpp
+)
+target_link_libraries(test2
+)
+
 
 add_executable(vector
   src/data_structure/vector.cpp
 )
 target_link_libraries(vector
+)
+
+#以下是c++多线程
+add_executable(thread1
+  src/c++thread/thread1.cpp
+)
+target_link_libraries(thread1
+pthread
+)
+
+add_executable(thread2
+  src/c++thread/thread2.cpp
+)
+target_link_libraries(thread2
+pthread
 )

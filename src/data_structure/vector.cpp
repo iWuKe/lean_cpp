@@ -1,6 +1,7 @@
 /*
 vector deque 在c++11之前使用erase删除迭代器后该迭代器会失效，但是在c++11之后却不会
 
+/usr/include/c++/7/bits/stl_vector.h
 函数原型
 #if __cplusplus >= 201103L
       erase(const_iterator __position)
