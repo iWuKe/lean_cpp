@@ -162,3 +162,10 @@ add_executable(thread2
 target_link_libraries(thread2
 pthread
 )
+
+add_executable(thread3
+  src/c++thread/thread3.cpp
+)
+target_link_libraries(thread3
+pthread
+)
